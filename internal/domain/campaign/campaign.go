@@ -1,6 +1,8 @@
 package campaign
 
-import "time"
+import (
+	"time"
+)
 
 type Contact struct {
 	Email string
@@ -22,7 +24,7 @@ func NewCampaign(name string, content string, emails []string) *Campaign {
 	}
 
 	return &Campaign{
-		Id:        "1",
+		Id:        "2",
 		Name:      name,
 		Content:   content,
 		CreatedOn: time.Now(),

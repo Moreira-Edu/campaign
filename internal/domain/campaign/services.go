@@ -1,13 +1,16 @@
 package campaign
 
-import "emailn/internal/contract"
+import (
+	"emailn/internal/contract"
+	"errors"
+)
 
 type Service struct {
 	Repository Repository
 }
 
-func (s *Service) Create(NewCampaign contract.NewCampaign) error {
+func (s *Service) Create(NewCampaign contract.NewCampaign) (string, error) {
 
-	return nil
+	return "", errors.New("teste")
 
 }

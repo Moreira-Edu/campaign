@@ -2,6 +2,7 @@ package campaign
 
 import (
 	"emailn/internal/contract"
+	internalerrors "emailn/internal/internalErrors"
 	"errors"
 	"testing"
 
@@ -70,10 +71,10 @@ func Test_Create_ValidateRepositorySave(t *testing.T) {
 	}
 
 	repositoryMock := new(repositoryMock)
-	repositoryMock.On("Save", mock.Anything).Return(errors.New("Error to save on database"))
+	repositoryMock.On("Save", mock.Anything).Return(errors.New("Internal server error"))
 	service.Repository = repositoryMock
 
 	_, err := service.Create(newCampaign)
 
-	assert.Equal("Error to save on database", err.Error())
+	assert.True(errors.Is(internalerrors.ErrInernal, err))
 }

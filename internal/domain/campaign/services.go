@@ -20,6 +20,7 @@ func (s *Service) Create(newCampaign contract.NewCampaign) (string, error) {
 	}
 
 	err = s.Repository.Save(campaign)
+	println(campaign)
 	if err != nil {
 		return "", internalerrors.ErrInernal
 	}

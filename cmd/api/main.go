@@ -4,6 +4,7 @@ import (
 	"emailn/internal/domain/campaign"
 	"emailn/internal/endpoints"
 	"emailn/internal/infrastructure/database"
+	"emailn/internal/middlewares"
 	"net/http"
 
 	"github.com/go-chi/chi/middleware"
@@ -25,8 +26,8 @@ func main() {
 		CampaignService: campaignService,
 	}
 
-	r.Post("/campaigns", handler.CampaignPost)
-	r.Get("/campaigns", handler.CampaignGetAll)
+	r.Post("/campaigns", middlewares.HandlerError(handler.CampaignPost))
+	r.Get("/campaigns", middlewares.HandlerError(handler.CampaignGetAll))
 
 	http.ListenAndServe(":3000", r)
 }

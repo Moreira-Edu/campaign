@@ -20,8 +20,8 @@ func (r *repositoryMock) Save(campaign *Campaign) error {
 	return args.Error(0)
 }
 
-func (r *repositoryMock) GetAll() []Campaign {
-	return nil
+func (r *repositoryMock) GetAll() ([]Campaign, error) {
+	return nil, nil
 }
 
 var (
